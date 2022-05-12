@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :authorize_request
-
+  before_action :load_book, only: :update
   def create
     book = Book.new(book_params)
     book.user = @current_user
@@ -24,5 +24,9 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:title, :description)
+  end
+
+  def load_book
+    @book = Book.find(params[:id])
   end
 end
