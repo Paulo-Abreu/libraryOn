@@ -1,6 +1,8 @@
 class BooksController < ApplicationController
   before_action :authorize_request
-  before_action :load_book, only: :update
+
+  before_action :load_book, only: [:update, :destroy]
+  
   def create
     book = Book.new(book_params)
     book.user = @current_user
@@ -15,6 +17,14 @@ class BooksController < ApplicationController
   def update
     if @book.update(book_params)
       render json: @book
+    else
+      render json: @book.errors.messages, status: 422
+    end
+  end
+
+  def destroy
+    if @book.destroy
+      render json:  { message: 'deleted successfully' }, status: 200
     else
       render json: @book.errors.messages, status: 422
     end
