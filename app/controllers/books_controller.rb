@@ -1,11 +1,8 @@
 class BooksController < ApplicationController
   before_action :authorize_request
 
-  before_action :load_book, only: [:update, :destroy, :loan]
+  before_action :load_book, only: [:update, :destroy]
   
-  def loan
-    loan = BookLoan.new(user:@current_user, book:@book.id)
-  end
   def create
     book = Book.new(book_params)
     book.user = @current_user

@@ -1,3 +1,5 @@
+# Gemfile
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -27,6 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'jwt'
 gem 'bcrypt', '~> 3.1.7'
 gem 'whenever', require: false
+gem 'rubocop-rails', require: false
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -34,8 +37,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-    gem 'pry'
-
+  gem 'pry'
 end
 
 group :development do
