@@ -6,8 +6,8 @@ class BooksLoansController < ApplicationController
   before_action :load_loan, only: [:update]
 
   def create
+    loan = BookLoan.new(user:@current_user, book_id:@book.id, loan_until:(Date.today + 7.days))
     
-    loan = BookLoan.new(user:@current_user, book_id:@book.id)
     if loan.save
       render json: loan, status: 201
     else
