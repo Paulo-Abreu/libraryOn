@@ -4,12 +4,9 @@ Rails.application.routes.draw do
   post '/auth/login', to: 'authentication#login'
   get '/*a', to: 'application#not_found'
 
-    namespace :api do
-    namespace :v1 do
-      resources :books
-      get '/books', to: 'books#index'
-    end
-  end
-
+  
+  resources :books
+  resources :books_loans
+  get '/books_loans/:id', to: 'books_loans#create'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
