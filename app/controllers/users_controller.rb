@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# UsersController
 class UsersController < ApplicationController
   before_action :authorize_request, except: :create
   before_action :find_user, except: %i[create index]
@@ -47,7 +50,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.permit(
-      :avatar, :name, :username, :email, :password, :password_confirmation
+      :avatar, :name, :username, :email, :password, :password_confirmation, :user_type
     )
   end
 end

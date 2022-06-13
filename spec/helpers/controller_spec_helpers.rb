@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# ControllerSpecHelpers
 module ControllerSpecHelpers
   def authenticate user
     token = Token.where(user_id: user.id).first || Factory.create(:token, user_id: user.id)
